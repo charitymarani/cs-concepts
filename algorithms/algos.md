@@ -18,6 +18,10 @@
 
 **Insertion Sort** iterates over the array and compares two items at a time. It swaps the items if one is larger than the other and continues to iterate left, comparing and swapping until the minimum is at the front of the array.
 
+**Bubble sort** is acomparison-based algorithm in which each pair of adjacent elements is compared and the elements are swapped if they are not in order.
+
+**Selection sort** sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning. In every iteration, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray.
+
 ## Hashing
 
 A hashing algorithm is a cryptographic hash function. It is a mathematical algorithm that maps data of arbitrary size to a hash of a fixed size. It’s designed to be a one way function impossible to invert.
@@ -29,3 +33,130 @@ A hashing algorithm is a cryptographic hash function. It is a mathematical algor
 **Collisions** occur when two different pieces of data end up with the same hash value.
 
 **Linear Probing** is a mechanism for resolving hash collisions of values of hash functions by sequentially searching the hash table for a free location.
+
+## Time Complexity
+
+Time complexity is the amount of time it takes to run an algorithm. To decide what algorithm is better, we would look at how much space and memory it needs(space complexity). What's nore important though is how much time it takes. Faster algorithms are better. A timer is not enough to get time complexity because things like device used, input size etc affect the length of time. What is needed is a measure that represents a complexity that takes into consideration the input size and takes care of the difference between devices.
+
+### Using Functions
+
+Takes the length of input as an argument and returns the number of operations(e.g assignment, comparison, addition etc.)
+Time complexity for:
+
+    ```java
+    int sum = 0;
+    for (int i=0; i < n; i++) {
+      sum = sum + array[i];
+    }
+
+    ```
+
+becomes
+
+    ```sh
+    timeComplexity(no. of operations) = 4n + 2
+    - 4n(<, ++, 3rd = and +) that happen n times
+    - 2 (for the first 2 assignments that only happen twice no matter how long the input is)
+
+    ```
+
+Alternatively:
+
+    ```java
+    int sum = 0;
+    for (int i=0; i < n; i++) {
+      sum = sum + array[i];
+    }
+
+    ```
+
+becomes
+
+    ```sh
+    timeComplexity(no. of operations) = 3n + 2
+    - 3n(<, ++, =+) that happen n times
+    - 2 (for the first 2 assignments that only happen twice no matter how long the input is)
+
+    ```
+
+## Big O Notation
+
+### O(N)
+
+`O(N)` describes an algorithm whose performance will grow linearly and in direct proportion to the size of the input data set.
+
+According to Big O Notation, the two time complexities above: `4n + 2` and `3n + 2` are pretty much the same despite looking different. It hides the unimportant(2) and keeps the important(4n/3n). O(N) can be seen as a container for all algorithms with a linear time complexity.
+
+### O(1)
+
+`O(1)` describes an algorithm that will always execute in the same time (or space) regardless of the size of the input data set. Complexity is always calculated for the worst case scenario.
+
+  ```js
+    if(n > 50) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  ```
+
+Time complexity for the above is 2 - it checks for length and either returns true of false. It doesn't matter how bit the input is, it will remain the same. In Big O Notation, all constant algorithms are in `O(1)`, this is the fastest Big O measure.
+
+### O(N^2)
+
+`O(N^2)` represents an algorithm whose performance is directly proportional to the square of the size of the input data set. This is common with algorithms that involve nested iterations over the data set. Deeper nested iterations will result in O(n^3), O(n^4) etc.
+
+  ```java
+    // Whole algorithm
+    // T = n * (5 + 3n + 1) + 2
+    // n - number of times entire operation will be executed
+    // 3n + 1 - from inner loop
+    // 2 - from the first 2 assignments - never changes
+    // 5 - from i < n, i++, array[i] < 10, result = and result + array[i]
+    // T = 6n + 3n^2 + 2
+    int result = 0;
+    for (int i = 0; i < n; i++) {
+      if (array[i] < 10) {
+        result = result + array[i]
+      }
+
+      // T = 3n + 1
+      // 3n - condition, increment and print that will happen n times
+      // 1 - assignment of j
+      for (int j = 0; j < n; j++) {
+        print(array[j]);
+      }
+    }
+  ```
+
+We get the Big O complexity of the above by getting the biggest term i.e `3n^2` and removing the constant i.e. `2n`. Big O complexity then becomes `O(N^2)`
+
+### O(2^N)
+
+`O(2^N)` denotes an algorithm whose growth doubles with each additon to the input data set. The growth curve of an O(2N) function is exponential - starting off very shallow, then rising meteorically. E.g
+
+  ```java
+    int Fibonacci(int number) {
+        if (number <= 1) return number;
+        return Fibonacci(number - 2) + Fibonacci(number - 1);
+        }
+  ```
+
+### O(log N)
+
+Explanation sourced [here](https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/).
+
+Binary search technique is a good example of this in action. It works by selecting the middle element of the data set, essentially the median, and compares it against a target value. If the values match it will return success. If the target value is higher than the value of the probe element it will take the upper half of the data set and perform the same operation against it. Likewise, if the target value is lower than the value of the probe element it will perform the operation against the lower half. It will continue to halve the data set with each iteration until the value has been found or until it can no longer split the data set.
+
+The iterative halving of data sets described in the binary search example produces a growth curve that peaks at the beginning and slowly flattens out as the size of the data sets increase e.g. an input data set containing 10 items takes one second to complete, a data set containing 100 items takes two seconds, and a data set containing 1000 items will take three seconds. Doubling the size of the input data set has little effect on its growth as after a single iteration of the algorithm the data set will be halved and therefore on a par with an input data set half the size. This makes algorithms like binary search extremely efficient when dealing with large data sets.
+
+### Time complexity for common sorting algorithms
+
+|                       | Best case        | Average cases    | Worst cases      |
+| --------------------- | ---------------- | ---------------- | ---------------- |
+| **Bubble Sort**       | O(N)             | O(N^2)           | O(N^2)           |
+| **Selection Sort**    | O(N^2)           | O(N^2)           | O(N^2)           |
+| **Insertion Sort**    | O(N)             | O(N^2)           | O(N^2)           |
+| **Merge Sort**        | O(n log(n))      | O(n log(n))      | O(n log(n))      |
+| **Quick Sort**        | O(n log(n))      | O(n log(n))      | O(N^2)           |
+| **Heap Sort**         | O(n log(n))      | O(n log(n))      | O(n log(n))      |
