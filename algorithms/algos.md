@@ -152,7 +152,7 @@ The iterative halving of data sets described in the binary search example produc
 
 ### Time complexity for common sorting algorithms
 
-|                       | Best case        | Average cases    | Worst cases      |
+|                       | Best case        | Average case     | Worst case       |
 | --------------------- | ---------------- | ---------------- | ---------------- |
 | **Bubble Sort**       | O(N)             | O(N^2)           | O(N^2)           |
 | **Selection Sort**    | O(N^2)           | O(N^2)           | O(N^2)           |
