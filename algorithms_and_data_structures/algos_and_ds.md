@@ -4,7 +4,7 @@
 
 **Breadth First Search** traverses to down a tree level by level. Starts with level two branches, then level one branches then finally the bottom nodes.
 
-**Depth First Search** traverses down through one branch of a tree until we get to a bottom node, and then working our way back to the “top” of the tree. 
+**Depth First Search** traverses down through one branch of a tree until we get to a bottom node, and then working our way back to the “top” of the tree.
 
 **A\* Search** finds the shortest path efficiently. It’s the most popular pathfinding algorithms for its flexibility and wide usage. Starting from a specific starting node of a graph, it aims to find a path to the given goal node by optimizing resources i.e travelling the least distance, using the shortest time, etc. It does this by maintaining a tree of paths originating at the start node and extending those paths one edge at a time until its termination criterion is satisfied.
 
@@ -160,3 +160,82 @@ The iterative halving of data sets described in the binary search example produc
 | **Merge Sort**        | O(n log(n))      | O(n log(n))      | O(n log(n))      |
 | **Quick Sort**        | O(n log(n))      | O(n log(n))      | O(N^2)           |
 | **Heap Sort**         | O(n log(n))      | O(n log(n))      | O(n log(n))      |
+
+# Data Structures
+
+## Stack
+
+Similar to a stack of books - the book piled on last becomes the first thing taken off the stack. Browser's back button works similarly to a stack as well. Methods: pop, push, peek, length. The Array object in JS already has all the functions needed to use it as a stack.
+
+## Set
+
+Like an array but there are no duplicate items and the values are in no particular order.
+
+## Queues
+
+A queue is similar to a stack the major differene being that a queue is first in first out(FIFO). Similar to a print queue or a queue of people.
+
+enqueue - pushes the first item onto the queue. dequeue - takes an item off the queue. There's 2 ways to deal with an array, items can either go into an array at the beginning of an arraay or at the end of an array. In queues they go in at the end of the array and come off at the beginning of the array. Hence enqueue .push() and dequeue .shift().
+
+### Priority Queues
+
+In a priority queue, you pass both the element and priority into the queue. Elements with a higher priorty are sent to the beginning of the queue.
+
+## Binary Search Tree
+
+A tree data structure is a way to hold data that when visualized looks like a tree you'd see in nature. All data points in the tree are called nodes. The top of the tree is the root node which branches out into additional nodes; each of which may have more child nodes and so on. Nodes with branches leading to other nodes are the parent of the nodes of the branches that lead to the child. Leaf nodes are nodes at the end of the tree that have no children. In each children of the node are parents of their own subtree.
+
+The Binary Search Tree is different from any other tree data structure in the sense that it can only have 2 branches for every single node. They are also ordered. Each subtree(left) is less or equal to the parent node and each right subtree is greater than or equal to the parent node. Because they use the principal of binary search, on average operations are able to skip about half the tree so that each lookup, insertion or deletion. takes time proportional to the logarithm of the number of items stored in the tree. This is better than the linear time needed to find items by key in an unsorted array but slower than the corresponding operations on a hash table.
+
+### Traversal & Height
+
+Height - distance from the root node to any given leaf node. Different paths in a highly branched tree structure may have different heights; at least a minimum height and a maximum height. If a tree is balanced, these values will be different at most by one.
+
+Min Height - distance from the root node to the first leaf node without 2 children
+Max Height - distance from the root node to the most bottom node
+Balanced tree - min and max values will be different at most by one
+
+A balanced tree makes searching through it much more efficient.
+
+Tree traversal methods can be used to explore tree data structures and find all the values of a tree. E.g BFS, DFS and A*S.
+
+inOrder Traversal - begins search at left most node and end at the right most node
+
+preOrder Traversal - explores the root nodes first before the leaves
+
+postOrder Traversal - explores the leaf nodes before the roots
+
+levelOrder Traversal - is the BFS
+
+## Linked List
+
+Here, elements are stored in a node. The node contains the element(info) and reference(link) to the next node. Like arrays, they can be used to implement other data structures. Each has a Head - points to first node and size.
+
+| Arrays                | Linked Lists     |
+| --------------------- | ---------------- |
+| Fixed size            | Dynamic size     |
+| Inefficient insertions and deletions    | Efficient insertions and deletions          |
+| Random access i.e efficient indexing    | No random access            |
+| May resukt in memory wast        | No memory waste      |
+| Sequential access is faster because elements are in contiguous memory locations       | Sequential access is slow because elements are not in contiguous memory locations      |
+
+## Trie
+
+## Heap
+
+### Heap (max and min)
+
+### Heap visualizatio
+
+## Graphs
+
+### Graphs: adjacency list, adjacency matrix, incidence matrix
+
+### Graphs: breadth-first search
+
+## Hash Tables
+
+## Additional Resources
+
+* Shilpa Jain's [article](https://codeburst.io/i-learned-all-data-structures-in-a-week-this-is-what-it-did-to-my-brain-547194ed5047)
+* [freeCodeCamp](https://youtu.be/t2CEgPsws3U)
